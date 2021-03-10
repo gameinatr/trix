@@ -1,0 +1,49 @@
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/thin-1.7.0/ext/thin_parser
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /Library/Ruby/Site/2.6.0 -r ./siteconf20210310-28912-14b5qd.rb extconf.rb --with-cflags\=-Wno-error\=implicit-function-declaration
+checking for main() in -lc... yes
+creating Makefile
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/thin-1.7.0/ext/thin_parser
+make DESTDIR\= clean
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/thin-1.7.0/ext/thin_parser
+make DESTDIR\=
+compiling parser.c
+compiling thin.c
+thin.c:242:3: warning: implicit declaration of function 'thin_http_parser_init' is invalid in C99 [-Wimplicit-function-declaration]
+  thin_http_parser_init(hp);
+  ^
+thin.c:260:3: warning: implicit declaration of function 'thin_http_parser_init' is invalid in C99 [-Wimplicit-function-declaration]
+  thin_http_parser_init(http);
+  ^
+thin.c:277:3: warning: implicit declaration of function 'thin_http_parser_init' is invalid in C99 [-Wimplicit-function-declaration]
+  thin_http_parser_init(http);
+  ^
+thin.c:294:3: warning: implicit declaration of function 'thin_http_parser_finish' is invalid in C99 [-Wimplicit-function-declaration]
+  thin_http_parser_finish(http);
+  ^
+thin.c:296:10: warning: implicit declaration of function 'thin_http_parser_is_finished' is invalid in C99 [-Wimplicit-function-declaration]
+  return thin_http_parser_is_finished(http) ? Qtrue : Qfalse;
+         ^
+thin.c:334:5: warning: implicit declaration of function 'thin_http_parser_execute' is invalid in C99 [-Wimplicit-function-declaration]
+    thin_http_parser_execute(http, dptr, dlen, from);
+    ^
+thin.c:338:8: warning: implicit declaration of function 'thin_http_parser_has_error' is invalid in C99 [-Wimplicit-function-declaration]
+    if(thin_http_parser_has_error(http)) {
+       ^
+thin.c:359:10: warning: implicit declaration of function 'thin_http_parser_has_error' is invalid in C99 [-Wimplicit-function-declaration]
+  return thin_http_parser_has_error(http) ? Qtrue : Qfalse;
+         ^
+thin.c:374:10: warning: implicit declaration of function 'thin_http_parser_is_finished' is invalid in C99 [-Wimplicit-function-declaration]
+  return thin_http_parser_is_finished(http) ? Qtrue : Qfalse;
+         ^
+9 warnings generated.
+linking shared-object thin_parser.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.Internal.sdk/usr/local/lib'
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.Internal.sdk/usr/local/lib'
+ld: warning: ignoring file thin.o, building for macOS-arm64e but attempting to link with file built for unknown-x86_64
+ld: warning: ignoring file parser.o, building for macOS-arm64e but attempting to link with file built for unknown-x86_64
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/thin-1.7.0/ext/thin_parser
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 thin_parser.bundle ./.gem.20210310-28912-1pi7nfg

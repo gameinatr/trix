@@ -1,0 +1,21 @@
+<%= @head %>
+
+(function() {
+  var context = <%= @flags.noglobal ? "{}" : "this" %>;
+
+  (function() {
+    <%= indent(@export, 4)%>
+  }).call(context);
+
+  var <%= @namespace %> = context.<%= @namespace %>;
+
+  (function() {
+    <%= indent(@tail, 4) %>
+  }).call(this);
+
+  if (typeof module === "object" && module.exports) {
+    module.exports = <%= @namespace %>;
+  } else if (typeof define === "function" && define.amd) {
+    define(<%= @namespace %>);
+  }
+}).call(this);

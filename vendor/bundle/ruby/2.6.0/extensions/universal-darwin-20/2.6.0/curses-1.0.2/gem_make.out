@@ -1,0 +1,70 @@
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/curses-1.0.2/ext/curses
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /Library/Ruby/Site/2.6.0 -r ./siteconf20210310-27404-4snhix.rb extconf.rb
+checking for tgetent() in -ltinfo... no
+checking for tgetent() in -ltermcap... yes
+checking for ncurses.h... yes
+checking for initscr() in -lncursesw... no
+checking for initscr() in -lncurses... yes
+header: ncurses.h
+library: ncurses
+checking for beep()... yes
+checking for bkgd()... yes
+checking for bkgdset()... yes
+checking for curs_set()... yes
+checking for deleteln()... yes
+checking for doupdate()... yes
+checking for flash()... yes
+checking for getbkgd()... yes
+checking for getnstr()... yes
+checking for init()... no
+checking for init in ncurses.h... no
+checking for isendwin()... yes
+checking for keyname()... yes
+checking for keypad()... yes
+checking for resizeterm()... yes
+checking for scrl()... yes
+checking for set()... no
+checking for set in ncurses.h... no
+checking for setscrreg()... yes
+checking for ungetch()... yes
+checking for wattroff()... yes
+checking for wattron()... yes
+checking for wattrset()... yes
+checking for wbkgd()... yes
+checking for wbkgdset()... yes
+checking for wdeleteln()... yes
+checking for wgetnstr()... yes
+checking for wresize()... yes
+checking for wscrl()... yes
+checking for wsetscrreg()... yes
+checking for def_prog_mode()... yes
+checking for reset_prog_mode()... yes
+checking for timeout()... yes
+checking for wtimeout()... yes
+checking for nodelay()... yes
+checking for init_color()... yes
+checking for wcolor_set()... yes
+checking for use_default_colors()... yes
+checking for newpad()... yes
+checking for ESCDELAY in ncurses.h... yes
+checking for TABSIZE in ncurses.h... yes
+checking for COLORS in ncurses.h... yes
+checking for COLOR_PAIRS in ncurses.h... yes
+checking for function curses_version in ncurses.h... yes
+checking for variable curses_version in ncurses.h... no
+creating Makefile
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/curses-1.0.2/ext/curses
+make DESTDIR\= clean
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/curses-1.0.2/ext/curses
+make DESTDIR\=
+compiling curses.c
+linking shared-object curses.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.Internal.sdk/usr/local/lib'
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.Internal.sdk/usr/local/lib'
+ld: warning: ignoring file curses.o, building for macOS-arm64e but attempting to link with file built for unknown-x86_64
+
+current directory: /Users/yana/Desktop/js/trix/vendor/bundle/ruby/2.6.0/gems/curses-1.0.2/ext/curses
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 curses.bundle ./.gem.20210310-27404-14y1moe
