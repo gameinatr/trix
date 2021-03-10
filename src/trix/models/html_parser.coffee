@@ -1,8 +1,8 @@
 #= require trix/models/html_sanitizer
 
 {arraysAreEqual, makeElement, tagName, getBlockTagNames, walkTree,
- findClosestElementFromNode, elementContainsNode, nodeIsAttachmentElement,
- normalizeSpaces, breakableWhitespacePattern, squishBreakableWhitespace} = Trix
+  findClosestElementFromNode, elementContainsNode, nodeIsAttachmentElement,
+  normalizeSpaces, breakableWhitespacePattern, squishBreakableWhitespace} = Trix
 
 class Trix.HTMLParser extends Trix.BasicObject
   @parse: (html, options) ->
@@ -18,7 +18,7 @@ class Trix.HTMLParser extends Trix.BasicObject
   getDocument: ->
     Trix.Document.fromJSON(@blocks)
 
-  # HTML parsing
+# HTML parsing
 
   parse: ->
     try
@@ -136,7 +136,7 @@ class Trix.HTMLParser extends Trix.BasicObject
           unless element.parentNode.firstChild is element
             @appendStringWithAttributes(" | ")
 
-  # Document construction
+# Document construction
 
   appendBlockForAttributesWithElement: (attributes, element) ->
     @blockElements.push(element)
@@ -222,9 +222,10 @@ class Trix.HTMLParser extends Trix.BasicObject
     while element and element isnt @containerElement
       for attribute, config of Trix.config.blockAttributes when config.parse isnt false
         if tagName(element) is config.tagName
-          if config.test?(element) or not config.test
-            attributes.push(attribute)
-            attributes.push(config.listAttribute) if config.listAttribute
+          if element.className is config.className or not config.className
+            if config.test?(element) or not config.test
+              attributes.push(attribute)
+              attributes.push(config.listAttribute) if config.listAttribute
       element = element.parentNode
     attributes.reverse()
 
@@ -238,7 +239,7 @@ class Trix.HTMLParser extends Trix.BasicObject
 
   parseTrixDataAttribute = (element, name) ->
     try
-     JSON.parse(element.getAttribute("data-trix-#{name}"))
+      JSON.parse(element.getAttribute("data-trix-#{name}"))
     catch
       {}
 

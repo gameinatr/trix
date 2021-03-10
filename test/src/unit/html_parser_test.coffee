@@ -20,10 +20,10 @@ testGroup "Trix.HTMLParser", ->
       "<div>a<div>b</div>c</div>": "<div><!--block-->a<br>b<br>c</div>"
       "<div>a<div><div><div>b</div></div></div>c</div>": "<div><!--block-->a<br>b<br>c</div>"
       "<blockquote>a<div>b</div>c</blockquote>": "<blockquote><!--block-->a<br>b<br>c</blockquote>"
-      # TODO:
-      # "<div><div>a</div><div>b</div>c</div>": "<div><!--block-->a<br>b<br>c</div>"
-      # "<blockquote><div>a</div><div>b</div><div>c</div></blockquote>": "<blockquote><!--block-->a<br>b<br>c</blockquote>"
-      # "<blockquote><div>a<br></div><div><br></div><div>b<br></div></blockquote>": "<blockquote><!--block-->a<br><br>b</blockquote>"
+    # TODO:
+    # "<div><div>a</div><div>b</div>c</div>": "<div><!--block-->a<br>b<br>c</div>"
+    # "<blockquote><div>a</div><div>b</div><div>c</div></blockquote>": "<blockquote><!--block-->a<br>b<br>c</blockquote>"
+    # "<blockquote><div>a<br></div><div><br></div><div>b<br></div></blockquote>": "<blockquote><!--block-->a<br><br>b</blockquote>"
 
     for html, expectedHTML of cases
       do (html, expectedHTML) ->
@@ -259,6 +259,18 @@ testGroup "Trix.HTMLParser", ->
       document = Trix.HTMLParser.parse(html).getDocument()
       assert.documentHTMLEqual document, expectedHTML
 
+  test "parses block with className", ->
+    config =
+      blockWithClassName:
+        tagName: "div"
+        className: "class-name-1 class-name-2"
+
+    withBlockAttributeConfig config, ->
+      html = """<div class="class-name-1 class-name-2">a</div>"""
+      expectedHTML = """<div class="class-name-1 class-name-2"><!--block-->a</div>"""
+      document = Trix.HTMLParser.parse(html).getDocument()
+      assert.documentHTMLEqual document, expectedHTML
+
 withTextAttributeConfig = (config = {}, fn) ->
   {textAttributes} = Trix.config
   originalConfig = {}
@@ -275,6 +287,23 @@ withTextAttributeConfig = (config = {}, fn) ->
         textAttributes[key] = value
       else
         delete textAttributes[key]
+
+withBlockAttributeConfig = (config = {}, fn) ->
+  {blockAttributes} = Trix.config
+  originalConfig = {}
+
+  for key, value of config
+    originalConfig[key] = blockAttributes[key]
+    blockAttributes[key] = value
+
+  try
+    fn()
+  finally
+    for key, value of originalConfig
+      if value
+        blockAttributes[key] = value
+      else
+        delete blockAttributes[key]
 
 getOrigin = ->
   {protocol, hostname, port} = window.location
